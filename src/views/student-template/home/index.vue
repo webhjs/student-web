@@ -192,7 +192,7 @@ ul,li
 .containers
   position relative
   .export
-    position absolute
-    top 2.5vh
+    position fixed
+    top 13.5vh
     right 2vw
 </style>

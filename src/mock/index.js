@@ -15,10 +15,10 @@ Mock.setup({
 });
 
 // 登录相关接口
-Mock.mock("/login/login", "post", loginAPI.login);
-Mock.mock("/login/logout", "post", loginAPI.logout);
+Mock.mock("/api/login/login", "post", loginAPI.login);
+Mock.mock("/api/login/logout", "post", loginAPI.logout);
 
 // 用户信息相关接口
-Mock.mock("/user/getInfo", "post", userAPI.pullUserInfo);
+Mock.mock("/api/user/userInfo", "post", userAPI.pullUserInfo);
 
 export default Mock;

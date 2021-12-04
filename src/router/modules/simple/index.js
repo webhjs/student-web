@@ -6,44 +6,20 @@
  * @LastEditors: 金苏
  * @LastEditTime: 2021-10-09 11:32:08
  */
-import Login from "@/views/login";
 import Layout from "@/libs/layout/Layout";
+import { nameSpace } from '@/router/common'
+const baseUrl = `/${nameSpace}`
 
 export const constantRouterMap = [
-  {
-    path: "/redirect",
-    component: Layout,
-    hidden: true,
-    children: [
-      {
-        path: "/redirect/:path(.*)",
-        component: resolve => require(["@/views/redirect"], resolve)
-      }
-    ]
-  },
-  {
-    path: "/login",
-    name: "login",
-    hidden: true,
-    component: Login,
-    meta: {
-      title: "登录"
-    }
-  },
-  {
-    path: "/404",
-    component: () => import("@/views/error-page/404"),
-    hidden: true
-  },
   {
     path: "/",
     // hidden: true,
     component: Layout,
     meta: { icon: "s-home", title: "首页" },
-    redirect: "/home",
+    redirect: baseUrl + "/home",
     children: [
       {
-        path: "home",
+        path: baseUrl + "/home",
         name: "home",
         component: () => import("@/views/simple-template/home"),
         meta: { icon: "s-home", title: "首页" }
@@ -51,12 +27,12 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: "/table",
+    path: baseUrl + "/table",
     name: "table",
     alwaysShow: true,
     meta: { icon: "document-copy", title: "表格样例" },
     component: Layout,
-    redirect: "/table/drop-down-table",
+    redirect: baseUrl + "/table/drop-down-table",
     children: [
       {
         path: "drop-down-table",
@@ -79,12 +55,12 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: "/flowsheet",
+    path: baseUrl + "/flowsheet",
     name: "flowsheet",
     alwaysShow: true,
     meta: { icon: "document-copy", title: "流程样例" },
     component: Layout,
-    redirect: "/flowsheet/process",
+    redirect: baseUrl + "/flowsheet/process",
     children: [
       {
         path: "process",
@@ -97,12 +73,12 @@ export const constantRouterMap = [
 ];
 export const asyncRouterMap = [
   {
-    path: "/components",
+    path: baseUrl + "/components",
     alwaysShow: true,
     name: "icon",
     meta: { icon: "brush", title: "组件", roles: ["Lucy"] },
     component: Layout,
-    redirect: "/components/component-index",
+    redirect: baseUrl + "/components/component-index",
     children: [
       {
         path: "component-index",
@@ -113,12 +89,12 @@ export const asyncRouterMap = [
     ]
   },
   {
-    path: "/icon",
+    path: baseUrl + "/icon",
     alwaysShow: true,
     name: "icon",
     meta: { icon: "brush", title: "图标库", roles: ["Lucy"] },
     component: Layout,
-    redirect: "/icon/font-icon",
+    redirect: baseUrl + "/icon/font-icon",
     children: [
       {
         path: "font-icon",
@@ -129,11 +105,11 @@ export const asyncRouterMap = [
     ]
   },
   {
-    path: "/map",
+    path: baseUrl + "/map",
     component: Layout,
     name: "map",
     alwaysShow: true,
-    redirect: "/map/citymap",
+    redirect: baseUrl + "/map/citymap",
     meta: { icon: "s-home", title: "地图", roles: ["Lucy"] },
     children: [
       {
@@ -145,10 +121,10 @@ export const asyncRouterMap = [
     ]
   },
   {
-    path: "/three",
+    path: baseUrl + "/three",
     component: Layout,
     alwaysShow: true,
-    redirect: "/three/document",
+    redirect: baseUrl + "/three/document",
     meta: { icon: "s-home", title: "第三方文档", roles: ["Lucy"] },
     children: [
       {
@@ -158,6 +134,5 @@ export const asyncRouterMap = [
         component: () => import("@/views/simple-template/document")
       }
     ]
-  },
-  { path: "*", redirect: "/404", hidden: true }
+  }
 ];

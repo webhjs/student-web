@@ -8,8 +8,7 @@
  */
 import Vue from "vue";
 import Router from "vue-router";
-
-import { routerFile } from "@/config";
+import { nameSpace } from '@/router/common'
 
 /*读取router配置*/
 const modulesFiles = require.context('./modules', true, /\.js$/)
@@ -19,10 +18,12 @@ export const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = value
   return modules
 }, {})
-export const routerModules = modules[routerFile]; // 设置读取路由
+export const routerModules = modules[nameSpace]; // 设置读取路由
 /*读取router配置*/
 
-const { constantRouterMap } = routerModules;
+const { constantRouterMap } = routerModules ? routerModules : { constantRouterMap: [] };
+
+import { constantCommonRouterMap } from "@/router/common"
 
 // 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
 const originalPush = Router.prototype.push
@@ -34,7 +35,7 @@ return originalPush.call(this, location).catch(err => err)
 Vue.use(Router);
 
 export default new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   // scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: constantCommonRouterMap.concat(constantRouterMap)
 })

@@ -1,7 +1,7 @@
 
 ###  vue-client
 
-####  Project setup
+####  Project setup1
 ```
 npm install
 ```
@@ -20,4 +20,5 @@ npm run build
 ```
 npm run lint
 ```
-123
+
+#### Customize configuration
