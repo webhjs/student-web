@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
     return
   }
   // 保存在store中路由不为空则放行 (如果执行了刷新操作，则 store 里的路由为空，此时需要重新添加路由)
-  if (store.getters['layout/routers'].length && accountInfo.id !== null) {
+  if (store.getters['layout/routers'].length && accountInfo.id) {
     //放行
     next()
     return;
@@ -63,12 +63,12 @@ router.beforeEach(async (to, from, next) => {
     const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), ["Lucy"], accountInfo.menus);
     store.commit("layout/setRouters", constantRouterMap.concat(accessRoutes));
     // 动态添加路由到router内
-    router.addRoutes(accessRoutes)
+    router.addRoutes(accessRoutes);
     next({ ...to }) // hack方法 确保addRoutes已完成
   } else {
     const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), []);
     store.commit("layout/setRouters", constantRouterMap.concat(accessRoutes));
-    router.addRoutes(accessRoutes)
+    router.addRoutes(accessRoutes);
     next({ ...to }) // hack方法 确保addRoutes已完成
   }
 });
