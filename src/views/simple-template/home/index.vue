@@ -7,7 +7,7 @@
  * @FilePath: \vue-cms\src\views\home\index.vue
 -->
 <template>
-  <div class="containers">
+  <div>
     <div class="row" id="pdfDom">
       <div class="golbal">
         XX市卫生健康委员会<el-divider></el-divider>
@@ -189,10 +189,8 @@ ul,li
   font-weight bold
 .list-item
   line-height 30px
-.containers
-  position relative
-  .export
-    position absolute
-    top 2.5vh
-    right 2vw
+.export
+  position absolute
+  top 2.5vh
+  right 2vw
 </style>

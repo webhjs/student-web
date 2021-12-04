@@ -8,7 +8,7 @@
  */
 
 export default {
-  login: ["/api/login/login", "post"],
-  userInfo: ["/api/user/userInfo", "post"],
+  login: ["/api/login/login", "post", "params"],
+  userInfo: ["/api/user/getMyInfo", "post"],
   logout: ["/api/login/logout", "post"]
 };

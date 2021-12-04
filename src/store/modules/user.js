@@ -35,8 +35,8 @@ const user = {
             }
           })
           .catch(err => {
-            Message.error(err.error);
-            reject(err.error);
+            Message.error(err);
+            reject(err);
           });
       });
     },

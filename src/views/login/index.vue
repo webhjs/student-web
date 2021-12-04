@@ -160,7 +160,7 @@ export default {
             })
             .catch(err => {
               this.loading = false;
-              this.$message.error(err.message);
+              this.$message.error(err);
             });
         } else {
           this.loading = false;
