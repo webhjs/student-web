@@ -40,9 +40,9 @@ router.beforeEach(async (to, from, next) => {
     next(`/login?redirect=${to.path}`);
     return;
   }
-  let res
+  let accountInfo = store.getters['user/accountInfo']
   try {
-    res = await store.dispatch("user/pullUserInfo", getToken())
+    accountInfo = accountInfo.id ? accountInfo : await store.dispatch("user/pullUserInfo")
   }  catch (_) {
     Message.warning('拉取用户信息失败')
     next(`/login?redirect=${to.path}`);
@@ -50,17 +50,16 @@ router.beforeEach(async (to, from, next) => {
     return
   }
   // 保存在store中路由不为空则放行 (如果执行了刷新操作，则 store 里的路由为空，此时需要重新添加路由)
-  if (store.getters['layout/routers'].length && res.token) {
+  if (store.getters['layout/routers'].length && accountInfo.id !== null) {
     //放行
     next()
     return;
   }
-  if (!res.token) {
+  if (!accountInfo.id) {
     next(`/login?redirect=${to.path}`);
     return;
   }
-  const accountInfo = store.getters['user/accountInfo']
-  if (accountInfo.token) {
+  if (accountInfo.id) {
     const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), ["Lucy"], accountInfo.menus);
     store.commit("layout/setRouters", constantRouterMap.concat(accessRoutes));
     // 动态添加路由到router内

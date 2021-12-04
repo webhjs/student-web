@@ -45,6 +45,7 @@ function pullUserInfo() {
   return {
     "code": 200,
     "data": {
+      "id": '1',
       "personname": "学生", //真实名
       "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXJyZW50VGltZU1pbGxpcyI6IjE2Mzc0OTM1NzAzNjgiLCJ0ZW5hbnRpZCI6IjMxMDAwMDAwMTAwMDEiLCJleHAiOjE2Mzc1MDA3NzAsInVzZXJuYW1lIjoic3R1ZGVudCJ9.ZSlf-Vb4k4bH_JR2gAykQ57FvFXMqv8s_lCZuBrH6_Q", //token
       "userimgurl": "/Path/user/3aa978f2-fadc-4540-9cef-996e760f4d74.png", //用户头像

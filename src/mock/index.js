@@ -7,7 +7,7 @@
  * @FilePath: \vue-cms\src\mock\index.js
  */
 import Mock from "mockjs";
-import * as loginAPI from "./modules/login";
+// import * as loginAPI from "./modules/login";
 import * as userAPI from "./modules/user";
 
 Mock.setup({
@@ -15,10 +15,18 @@ Mock.setup({
 });
 
 // 登录相关接口
-Mock.mock("/api/login/login", "post", loginAPI.login);
+Mock.mock("/api/open/login", "post", loginAPI.login);
 Mock.mock("/api/login/logout", "post", loginAPI.logout);
 
+Mock.mock("/api/login/test", "post", {
+  "code": 155,
+  "data": {
+    "message": "hellow"
+  },
+  "msg": ""
+});
+
 // 用户信息相关接口
-Mock.mock("/api/user/userInfo", "post", userAPI.pullUserInfo);
+Mock.mock("/api/user/getMyInfo", "get", userAPI.pullUserInfo);
 
 export default Mock;

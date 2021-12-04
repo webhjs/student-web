@@ -84,6 +84,15 @@ export default {
     Seal,
     HistogramChart
   },
+  mounted() {
+    this.api("login/test")
+      .then(resp => {
+        console.log('刷新登录数据', resp)
+      })
+      .catch(err => {
+        this.$message.error(err.message);
+      });
+  },
   data() {
     return {
       tabledata: [

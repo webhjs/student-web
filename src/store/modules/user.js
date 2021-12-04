@@ -2,8 +2,8 @@ import { Api } from "@/api";
 import { setToken, removeToken } from "@/libs/common/auth";
 import { Message } from 'element-ui';
 
-const SET_ACCOUNT_INFO = "SET_ACCOUNT_INFO";
-const SET_TOKEN = "SET_TOKEN";
+const SET_ACCOUNT_INFO = "set_account_info";
+const SET_TOKEN = "set_token";
 
 const user = {
   namespaced: true,
@@ -41,9 +41,9 @@ const user = {
       });
     },
     // 拉取用户信息
-    pullUserInfo({ commit }, token) {
+    pullUserInfo({ commit }) {
       return new Promise((resolve, reject) => {
-        Api("login/userInfo", { token })
+        Api("login/userInfo")
           .then(resp => {
             if (resp.code == 200) {
               commit(SET_TOKEN, resp.data.token);
@@ -68,7 +68,7 @@ const user = {
       });
     },
     // 头像更新
-    doUpdateAvatar({ commit }, imgFile) {
+    doUpdateAvatar({ dispatch, commit }, imgFile) {
       return new Promise(resolve => {
         setTimeout(() => {
           // commit(SET_AVATAR, imgFile);
