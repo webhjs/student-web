@@ -7,7 +7,7 @@
  * @FilePath: \vue-cms\src\mock\index.js
  */
 import Mock from "mockjs";
-// import * as loginAPI from "./modules/login";
+import * as loginAPI from "./modules/login";
 import * as userAPI from "./modules/user";
 
 Mock.setup({
