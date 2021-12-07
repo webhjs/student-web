@@ -34,8 +34,12 @@ return originalPush.call(this, location).catch(err => err)
 
 Vue.use(Router);
 
-export default new Router({
-  mode: 'history', // require service support
-  // scrollBehavior: () => ({ y: 0 }),
-  routes: constantCommonRouterMap.concat(constantRouterMap)
-})
+const routerCreate = () => {
+  return new Router({
+    mode: 'history', // require service support
+    // scrollBehavior: () => ({ y: 0 }),
+    routes: constantCommonRouterMap.concat(constantRouterMap)
+  })
+}
+const router = routerCreate()
+export default router

@@ -11,7 +11,7 @@ import axios from 'axios'
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: process.env.VUE_APP_ENV ? '/api' : '',
   timeout: 15000, // 请求超时时间
   withCredentials: true //带上cookie
 })
