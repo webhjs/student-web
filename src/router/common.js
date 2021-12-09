@@ -37,5 +37,5 @@ export const constantCommonRouterMap = [
   }
 ]
 export const asyncCommonRouterMap = [
-    { path: "*", redirect: "/404", hidden: true }
+    { name: '404', path: "*", redirect: "/404", hidden: true }
 ]
