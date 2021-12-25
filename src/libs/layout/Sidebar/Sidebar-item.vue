@@ -36,14 +36,13 @@
             :item="child"
             :base-path="resolvePath(child.path)"
           />
-
-          <el-menu-item
-            v-else-if="Object.keys(child).length"
-            :key="child.path"
-            :index="resolvePath(child.path)"
-          >
-            <item :icon="child.meta.icon" :title="child.meta.title"></item>
-          </el-menu-item>
+            <el-menu-item
+              v-else-if="Object.keys(child).length"
+              :key="child.path"
+              :index="resolvePath(child.path)"
+            >
+              <item :icon="child.meta.icon" :title="child.meta.title"></item>
+            </el-menu-item>
         </template>
       </template>
     </el-submenu>

@@ -56,4 +56,11 @@ function pullUserInfo() {
   };
 }
 
-export { userMap, pullUserInfo };
+
+function getUserMenuList() {
+  return {
+    
+  };
+}
+
+export { userMap, pullUserInfo, getUserMenuList };

@@ -2,11 +2,11 @@
   <div class="top-navbar">
     <el-menu
       ref="currentTopMenu"
-      class="flex h-14 text-xl relative"
+      class="el-menu"
       mode="horizontal"
       router
     >
-      <div class="flex flex-1 items-center" style="outline: none;">
+      <div class="menu-list" style="outline: none;">
         <el-menu-item v-if="logo" class="logo-name"  index="">
           <img
             src="@/libs/assets/imgs/logo.png"
@@ -22,14 +22,14 @@
 
         <breadcrumb v-if="breadIsShow"></breadcrumb>
         
-        <div style="outline: none;" class="flex-1 flex" id="menu-top-list-resize-id">
+        <div style="outline: none;" class="menu-wrap" id="menu-top-list-resize-id">
           <slot name="menulist" />
           <slot name="more" />
         </div>
       </div>
       <!-- class="flex w-60 justify-between items-center absolute right-10 top-1/2 bottom-1/2" -->
       <div
-        class="flex w-72 justify-between items-center mr-5"
+        class="menu-right"
         style="outline: none;"
       >
         <el-tooltip
@@ -46,18 +46,18 @@
           <i class="el-icon-setting cursor-pointer" />
         </div>
 
-        <div class="flex">
-          <el-dropdown trigger="click" class="w-full">
-            <div class="flex w-28">
+        <div class="userinfo-wrap">
+          <el-dropdown trigger="click" class="menu-dropdown">
+            <div class="dropdown-wrap">
               <img
-                class="inline rounded-full"
+                class="drop-img"
                 width="30px"
                 height="30px"
                 src="/static/images/avatar/1.jpg"
               />
-              <div class="flex-1 flex justify-center items-center">
-                <div class="w-full h-full pl-2 relative">
-                  <div class="absolute w-full h-full" v-ellipsis:top=" accountInfo.username">
+              <div class="drop-account">
+                <div class="account-wrap">
+                  <div class="username" v-ellipsis:top="accountInfo.username">
                     {{ accountInfo.username }}
                   </div>
                 </div>
@@ -70,6 +70,17 @@
                   {{ $t("navbar.profile") }}
                 </el-dropdown-item>
               </router-link>
+              <!-- <router-link to="/simple/home/index"> -->
+                <el-dropdown-item @click.native="gostudent">
+                  返回学生端
+                </el-dropdown-item>
+                <el-dropdown-item @click.native="goteacher">
+                  教员后台
+                </el-dropdown-item>
+                <el-dropdown-item @click.native="goadmin">
+                  系统管理
+                </el-dropdown-item>
+              <!-- </router-link> -->
               <el-dropdown-item @click.native="logout">
                 <span style="display:block;">{{ $t("navbar.logOut") }}</span>
               </el-dropdown-item>
@@ -142,8 +153,31 @@ export default {
       userLogout: "user/logout"
     }),
     ...mapMutations({
-      setDrawer: "layout/setDrawer"
+      setDrawer: "layout/setDrawer",
+      setPosition: "layout/setPosition",
+      setRoleName: "layout/setRoleName",
     }),
+    goadmin() {
+      this.setPosition('left')
+      this.setRoleName('系统管理员')
+      const path = '/simple/userlist/index'
+      window.location = path
+      // this.$router.push({ path: '/simple/userlist/index' });
+    },
+    gostudent() {
+      this.setPosition('left')
+      this.setRoleName('学员')
+      const path = '/home'
+      window.location = path
+      // this.$router.push({ path: '/home' });
+    },
+    goteacher() {
+      this.setPosition('left')
+      this.setRoleName('教员')
+      const path = '/teacher/examlist/index'
+      window.location = path
+      //this.$router.push({ path: '/teacher/examlist/index' });
+    },
     // 设置布局
     setLayout() {
       this.setDrawer(true);
@@ -179,5 +213,61 @@ export default {
   &:focus {
     background-color: transparent
   }
+}
+.el-menu {
+  display flex
+  height 55px
+  font-size 30px
+  position relative
+}
+.menu-list {
+  display flex
+  flex 1
+  align-items center
+}
+.menu-wrap {
+  display flex
+  flex 1
+}
+.menu-right {
+  display flex
+  justify-content space-between
+  align-items center
+  margin-right: 10px
+  width 320px
+  font-size 22px
+}
+.userinfo-wrap {
+  display flex;
+}
+.menu-dropdown {
+  width: 100%
+}
+.dropdown-wrap {
+  display flex
+  width 120px
+}
+.drop-img {
+  display inline
+  border-radius 100%
+}
+.drop-account {
+  display flex
+  flex: 1
+  justify-content center
+  align-items center
+}
+.account-wrap {
+  width 100%
+  height 100%
+  padding-left 10px
+  position relative
+}
+.username {
+  position absolute
+  width: 100%
+  font-size 18px
+  text-align center
+  line-height 30px
 }
 </style>

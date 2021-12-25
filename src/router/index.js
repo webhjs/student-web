@@ -8,7 +8,6 @@
  */
 import Vue from "vue";
 import Router from "vue-router";
-import { nameSpace } from '@/router/common'
 
 /*读取router配置*/
 const modulesFiles = require.context('./modules', true, /\.js$/)
@@ -18,7 +17,14 @@ export const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = value
   return modules
 }, {})
-export const routerModules = modules[nameSpace]; // 设置读取路由
+// 合并路由信息
+export const routerModules = Object.values(modules).reduce((pre, cur) => {
+  const { asyncRouterMap, constantRouterMap } = cur
+  return { 
+    asyncRouterMap: pre.asyncRouterMap.concat(asyncRouterMap),
+    constantRouterMap: pre.constantRouterMap.concat(constantRouterMap)
+  }
+}, { asyncRouterMap: [], constantRouterMap: [] })
 /*读取router配置*/
 
 const { constantRouterMap } = routerModules ? routerModules : { constantRouterMap: [] };
@@ -33,7 +39,6 @@ return originalPush.call(this, location).catch(err => err)
 }
 
 Vue.use(Router);
-
 const routerCreate = () => {
   return new Router({
     mode: 'history', // require service support

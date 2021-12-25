@@ -26,7 +26,7 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <div class="h-80 mt-8">
+    <div style="height: 200px">
       {{ hellow }}
       <monaco ref="monacoPreviewResource" id="monacoResource" v-model="hellow" />
     </div>

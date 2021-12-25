@@ -78,6 +78,9 @@ export default {
       lastChildren: {}
     }
   },
+  mounted() {
+    console.log(this.routers)
+  },
   watch: {
     '$route': {
       handler(route) {

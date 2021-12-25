@@ -29,4 +29,6 @@ Mock.mock("/api/login/test", "post", {
 // 用户信息相关接口
 Mock.mock("/api/user/getMyInfo", "get", userAPI.pullUserInfo);
 
+Mock.mock("/api/login/getUserMenuList", "get", userAPI.pullUserInfo);
+
 export default Mock;

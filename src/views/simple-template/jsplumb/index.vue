@@ -7,7 +7,7 @@
  * @LastEditTime: 2021-09-22 15:21:14
 -->
 <template>
-  <div class="containers flex flex-col">
+  <div class="containers">
     <JsplumbdtargetView id="js1" percent/>
     <Jsplumbdrag id="js3" percent/>
     <Jsplumbdtarget id="js2" percent/>
@@ -75,3 +75,11 @@ export default {
   }
 };
 </script>
+<style lang="stylus" scoped>
+.containers {
+  display flex
+  flex-flow column
+  overflow auto
+  background #efefef
+}
+</style>

@@ -7,12 +7,11 @@
  * @LastEditTime: 2021-08-30 11:18:20
 -->
 <template>
-  <div>
-    <div class="h-full w-full bg-white flex flex-col">
-      <div class="flex-1 relative">
-        main
+    <div class="container">
+      <div class="main-content">
+        <tinymce id="fill" fillBtn v-model="questiontitle" @changeNum="changeNum" />
       </div>
-      <div class="text-right p-4">
+      <div align="right">
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -25,16 +24,20 @@
         ></el-pagination>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
+import Tinymce from '@/components/Tinymce'
 export default {
+  components: {
+    Tinymce
+  },
   data() {
     return {
       currentPage: 1,
       pageSize: 100,
-      totalRecord: 0
+      totalRecord: 0,
+      questiontitle: ''
     };
   },
   mounted() {
@@ -43,7 +46,7 @@ export default {
   methods: {
     serach(page) {
       page && (this.currentPage = page);
-      this.api("xxx/list", {
+      this.api("login/logout", {
         ...this.formInline,
         page: this.currentPage,
         limit: this.pageSize
@@ -67,39 +70,24 @@ export default {
     handleCurrentChange(val) {
       this.currentPage = val;
       this.serach();
+    },
+    changeNum(val) {
+      alert(val)
     }
   }
 };
 </script>
 
 <style scoped lang="stylus">
-.input-with-select {
-  width: 300px;
-
-  /deep/ .el-button--medium {
-    padding: 10px 11px;
-    background: #1890ff;
-    color: white;
-  }
-
-  /deep/ .el-input-group__append, /deep/ .el-input-group__prepend {
-    padding: 0 16px;
-  }
-
-  /deep/ .el-button--medium {
-    border-radius: 0 4px 4px 0;
-  }
+.container {
+  background white
+  display flex
+  flex-flow column
+  height 100%
+  width 100%
 }
-
-/deep/ .el-form-item__label {
-  color: #888;
-}
-
-.w-250 {
-  width: 250px;
-}
-
-/deep/ .vertical {
-  vertical-align: middle;
+.main-content {
+  position relative;
+  flex: 1;
 }
 </style>

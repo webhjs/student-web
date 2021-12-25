@@ -29,10 +29,22 @@ export function Api(apiPath, data, headers) {
     method: apiMapReal[name][1],
     [param]: data
   };
-  return request({
-    ...querys,
-    ...headers
-  });
+  return new Promise((resolve, reject) => {
+    request({
+      ...querys,
+      ...headers
+    }).then(resp => {
+      if (resp.code == 200){
+        resolve(resp);
+      } else {
+        Message.error(resp.msg);
+        reject(resp)
+      }
+    }).catch(err => {
+      Message.error(err);
+      reject(err)
+    })
+  })
 }
 
 // const apiFun = {};
@@ -53,9 +65,7 @@ export function Api(apiPath, data, headers) {
  * @FilePath: \mandalat.frame\src\utils\htmlToPdf.js
  */
 import qs from 'qs'
-import store from "@/store";
 import { Message } from 'element-ui';
-import { loadFromLocal } from "@/libs/common/local-storage";
 export default {
   install(Vue) {
     Vue.prototype.api = function (apiPath, data, headers) {
@@ -90,26 +100,14 @@ export default {
           ...querys,
           ...headers
         }).then(resp => {
-          if (resp.code == 155) { // 刷新token
-            console.log('登录过期',resp)
-            if (!loadFromLocal("username", "") || !loadFromLocal("password", "")) return
-            store.dispatch("user/login", {
-              username: loadFromLocal("username", ""),
-              password: loadFromLocal("password", "")
-            })
-              .then(res => {
-                if (res.code == 200) {
-                  Message.success('刷新成功');
-                }
-                resolve(res);
-              })
-              .catch(err => {
-                reject(err)
-              })
-          } else {
+          if (resp.code == 200){
             resolve(resp);
+          } else {
+            Message.error(resp.msg);
+            reject(resp)
           }
         }).catch(err => {
+          Message.error(err);
           reject(err)
         })
       })

@@ -62,13 +62,14 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
   if (accountInfo.id) {
-    const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), ["Lucy"], accountInfo.menus);
-    store.commit("layout/setRouters", constantRouterMap.concat(accessRoutes));
+    const menuList = await store.dispatch("login/getUserMenuList")
+    const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), [], accountInfo.menus);
+    store.commit("layout/setOriginRouters", menuList || constantRouterMap.concat(accessRoutes))
     // 动态添加路由到router内
     router.addRoutes(accessRoutes);
     next({ ...to }) // hack方法 确保addRoutes已完成
   } else {
-    const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), []);
+    const accessRoutes = filterAsyncRoutes(asyncRouterMap.concat(asyncCommonRouterMap), ["Lucy"]);
     store.commit("layout/setRouters", constantRouterMap.concat(accessRoutes));
     router.addRoutes(accessRoutes);
     next({ ...to }) // hack方法 确保addRoutes已完成

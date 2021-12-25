@@ -1,8 +1,8 @@
 <template>
-  <div class="h-full w-full flex">
-    <pre class="bg-white z-50 h-full overflow-auto">{{ JSON.stringify(treeData, null, 4) }}</pre>
+  <div class="continer">
+    <pre class="left">{{ JSON.stringify(treeData, null, 4) }}</pre>
     <dragTreeTable
-      class="flex-1 flex flex-col relative border-wrap"
+      class="table-wrap"
       ref="table"
       :data="treeData"
       @drag="onTreeDataChange"
@@ -152,5 +152,22 @@ export default {
 </script>
 
 <style scoped>
-
+.continer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.left {
+  background: white;
+  z-index: 50;
+  height: 100%;
+  overflow: auto;
+  width: 300px;
+}
+.table-wrap {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
 </style>

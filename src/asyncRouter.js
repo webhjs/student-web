@@ -17,6 +17,7 @@ function hasPermission(roles, route) {
   }
 }
 function filterRoutes (routes, roles) { // 过滤角色
+  if (!roles.length) return routes
   const res = [];
   routes.forEach(route => {
     const tmp = { ...route };
@@ -31,6 +32,7 @@ function filterRoutes (routes, roles) { // 过滤角色
 }
 
 function filterMenus (routes, menus, parentUrl = '') { // 过滤菜单
+  if (!menus.length) return routes
   const res = [];
   routes.forEach(route => {
     const tmp = { ...route };

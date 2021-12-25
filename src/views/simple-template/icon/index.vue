@@ -5,7 +5,7 @@
         <el-tab-pane v-for="(cate, index) in iconList" :key="index">
           <span slot="label">{{ cate.cateName }}</span>
           <div
-            class="flex flex-wrap justify-start"
+            class="iconbox"
             style="height: calc(100vh - 12rem); overflow:auto;"
           >
             <div
@@ -29,7 +29,7 @@
       </el-tabs>
     </el-col>
 
-    <el-col class="toolsBar p-4 rounded border-gray-300" :span="4">
+    <el-col class="toolsBar" :span="4">
       <div class="r-set-title">颜色</div>
       <el-color-picker v-model="iconColor"></el-color-picker>
 
@@ -84,6 +84,8 @@ export default {
   width 200px
   border 1px solid #cdcdcd
   background #fff
+  padding 20px
+  border-radius 4px
 
 .icon-box {
   width 120px
@@ -101,5 +103,9 @@ export default {
     text-align: center;
     color: #99a9bf;
   }
+}
+.iconbox {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

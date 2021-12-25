@@ -10,12 +10,12 @@
 <template>
   <el-container>
     <div class="document">
-      <div class="listWrap flex flex-row my-2 mb-4">
+      <div class="listWrap">
         <el-card
           shadow="hover"
           v-for="item in list"
           :key="item.name"
-          :class="`cursor-pointer mx-2 ${active === item.name ? 'active' : ''}`"
+          :class="`cursor-item ${active === item.name ? 'active' : ''}`"
         >
           <el-link
             type="info"
@@ -95,6 +95,8 @@ export default {
 .document
   width 100%
   .listWrap
+    display flex
+    margin 10px
     img
       height 2rem
 
@@ -112,4 +114,7 @@ export default {
   iframe
     width 100%
     height calc(100vh - 15rem)
+.cursor-item
+  cursor pointer
+  margin 0 10px
 </style>

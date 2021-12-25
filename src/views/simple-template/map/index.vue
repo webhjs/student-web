@@ -13,11 +13,11 @@
       type="text"
       @click="goback"
       v-if="adCodePathStack.length"
-      class="absolute top-5 left-8 cursor-pointer rounded-full py-1 px-6 border border-indigo-300 text-indigo-300"
+      class="goback"
     >
       返回
     </span>
-    <div class="absolute top-20 left-8 text-white text-xl">
+    <div class="tootip">
       只支持安徽省六安市下钻
     </div>
   </div>
@@ -262,7 +262,7 @@ export default {
     },
     // 读取json数据
     requestJsonFn(adcode) {
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         try {
           fetch(`/static/maps/${adcode}_full.json`)
             .then(response => response.json())
@@ -333,4 +333,21 @@ export default {
   }
 };
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.goback
+  position absolute
+  top 30px
+  left 30px
+  cursor pointer
+  border-radius 20px
+  padding: 10px 20px
+  border: 1px solid #cccccc
+  line-height 16px
+  color white
+.tootip
+  position absolute
+  top 100px
+  left 30px
+  color white
+  font-size 15px
+</style>

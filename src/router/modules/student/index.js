@@ -7,40 +7,54 @@
  * @LastEditTime: 2021-10-09 11:32:08
  */
 import Layout from "@/libs/layout/Layout";
-import { nameSpace } from '@/router/common'
-const baseUrl = `/${nameSpace}`
+import { Lazy } from '@/libs/utils/custom';
 
-export const constantRouterMap = [
-  {
-    path: "/",
-    // hidden: true,
-    component: Layout,
-    meta: { icon: "s-home", title: "首页" },
-    redirect: baseUrl + "/home",
-    children: [
-      {
-        path: baseUrl + "/home",
-        name: "home",
-        component: () => import("@/views/student-template/home"),
-        meta: { icon: "s-home", title: "首页" }
-      }
-    ]
-  }
-];
+export const constantRouterMap = [ ];
 export const asyncRouterMap = [
   {
-    path: baseUrl + "/components",
+    path: "/basepage",
+    name: "basepage",
     alwaysShow: true,
-    name: "icon",
-    meta: { icon: "brush", title: "组件", roles: ["Lucy"] },
+    meta: { icon: "document-copy", title: "基础页面" },
     component: Layout,
-    redirect: baseUrl + "/components/component-index",
+    redirect: "/basepage/index",
     children: [
       {
-        path: "component-index",
-        name: "component-index",
-        meta: { icon: "brush", title: "组件列表" },
-        component: () => import("@/views/student-template/components/list")
+        path: "index",
+        name: "basepage-index",
+        meta: { icon: "document-copy", title: "基础页面" },
+        component: () => Lazy(import("@/views/simple-template/basepage"))
+      }
+    ]
+  },
+  {
+    path: "/map",
+    component: Layout,
+    name: "map",
+    alwaysShow: true,
+    redirect: "/map/citymap",
+    meta: { icon: "s-home", title: "地图", roles: ["Lucy"] },
+    children: [
+      {
+        path: "citymap",
+        name: "citymap",
+        meta: { icon: "star-on", title: "县地图", roles: ["Lucy"] },
+        component: () => Lazy(import("@/views/simple-template/map"))
+      }
+    ]
+  },
+  {
+    path: "/three",
+    component: Layout,
+    alwaysShow: true,
+    redirect: "/three/document",
+    meta: { icon: "s-home", title: "第三方文档" },
+    children: [
+      {
+        path: "document",
+        name: "document",
+        meta: { icon: "star-on", title: "官方文档", keepAlive: false },
+        component: () => Lazy(import("@/views/simple-template/document"))
       }
     ]
   }

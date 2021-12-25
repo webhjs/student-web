@@ -17,6 +17,44 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
+// externals: {
+//   vue: 'Vue',
+//   vuex: 'Vuex',
+//   'vue-router': 'VueRouter',
+//   axios: 'axios',
+//   'element-ui': 'ELEMENT',
+//   moment: 'moment',
+//   xlsx: 'XLSX',
+//   'particles.js': 'pJS',
+//   html2canvas: 'html2canvas',
+//   jquery: 'jQuery',
+//   viewerjs: 'Viewer',
+//   clipboard: 'ClipboardJS',
+//   nprogress: 'NProgress'
+// },
+
+// cdn链接
+const cdn = {
+  // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+    'element-ui': 'ELEMENT',
+  },
+  // cdn的css链接
+  css: ['https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css'],
+  // cdn的js链接
+  js: [
+    'https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.1/vue-router.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/axios/0.20.0/axios.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.3/index.min.js',
+  ]
+}
+
 module.exports = {
   publicPath: "/",
   outputDir: "dist", // 输出文件目录
@@ -35,16 +73,22 @@ module.exports = {
     plugins: [new CopyWebpackPlugin([{ from: "./static", to: "static" }])],
     resolve: {
       alias: {
+        // vue$: "vue/dist/vue.esm.js", 或 runtimeCompiler: true
         "@": resolve("src")
       }
-    }
+    },
+    externals: cdn.externals
   },
+  runtimeCompiler: true,
   chainWebpack: config => {
     config.plugin("monaco").use(new MonacoWebpackPlugin());
     config.plugin("html").tap(args => {
-      args[0].title = "在线考试系统";
+      args[0].title = "XX市家庭医生签约平台";
+      args[0].cdn = cdn
+      args[0].minify = false
       return args;
     });
+
     // 配置svg文件
     // set svg-sprite-loader
     config.module
@@ -63,9 +107,10 @@ module.exports = {
       })
       .end();
   },
-  productionSourceMap: true, // 生产生成 sourceMap 文件
+  productionSourceMap: false, // 生产生成 sourceMap 文件
   // "http://192.168.21.74:12699",
   // "http://192.168.8.19:30221",
+  // "http://192.168.0.194:12698/",
   devServer: {
     open: true,
     proxy: {

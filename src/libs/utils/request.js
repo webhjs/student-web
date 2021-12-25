@@ -9,9 +9,11 @@
 import { getToken } from "@/libs/common/auth";
 import axios from 'axios'
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
+
+console.log(process.env)
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.VUE_APP_ENV ? '/api' : '',
+  baseURL: process.env.VUE_APP_ENV == 'development' ? '/api' : '',
   timeout: 15000, // 请求超时时间
   withCredentials: true //带上cookie
 })

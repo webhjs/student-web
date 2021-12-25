@@ -58,6 +58,41 @@ const user = {
           });
       });
     },
+    // 拉取用户信息
+    getUserMenuList() {
+      return new Promise((resolve, reject) => {
+        Api("login/getUserMenuList")
+          .then(resp => {
+            if (resp.code == 200) {
+              const itor = (data) => {
+                data.forEach(ele => {
+                  ele.path = ele.url || ''
+                  ele.meta = {
+                    icon: ele.icon || '',
+                    title: ele.menutitle || ''
+                  }
+                  if (ele.children && ele.children.length) {
+                    itor(ele.children)
+                  }
+                });
+              }
+              const result = resp.data?.map(m => {
+                itor(m.menu)
+                return m
+              })
+              if (result && !Array.isArray(result)) {
+                alert('用户菜单必须是数组')
+              }
+              resolve(result);
+            } else {
+              reject(resp.msg);
+            }
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
+    },
     // 用户退出登录
     logout({ commit }) {
       return new Promise((resolve) => {

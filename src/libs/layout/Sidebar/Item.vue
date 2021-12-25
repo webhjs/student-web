@@ -29,6 +29,8 @@
         if(icon.startsWith('svg-')) {
           const _icon = icon.substr(4)
           vnodes.push(<svg-icon class="sidebar-icon" icon-class={_icon}/>)
+        } else if(icon.startsWith('fa-')) {
+          vnodes.push(<i class={'sidebar-icon fa ' + icon}></i>)
         } else {
           vnodes.push(<i class={'el-icon-' + icon}></i>)
         }
@@ -46,5 +48,5 @@
   font-size 1.1em
   margin-right 8px
   margin-left 4px
-  vertical-align -.3em
+  vertical-align middle
 </style>

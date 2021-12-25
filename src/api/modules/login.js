@@ -11,5 +11,6 @@ export default {
   login: ["/open/login", "post"],
   userInfo: ["/user/getMyInfo", "get"],
   logout: ["/login/logout", "post"],
-  test: ["/login/test", "post"]
+  test: ["/login/test", "post"],
+  getUserMenuList: ["/login/test", "post"]
 };
