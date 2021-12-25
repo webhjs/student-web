@@ -10,6 +10,10 @@
 import "@/libs/icons";
 // 全局 Mock 接口
 import "@/mock";
+// 全局阿里字体图标库
+import "@/libs/assets/aliFont/iconfont.css";
+// 全局fontawesome字体图标
+import "font-awesome/css/font-awesome.css";
 
 import Api from "@/api"
 
