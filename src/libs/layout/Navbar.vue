@@ -233,7 +233,7 @@ export default {
   display flex
   justify-content space-between
   align-items center
-  margin-right: 10px
+  margin-right: 24px
   width 320px
   font-size 22px
 }
