@@ -15,7 +15,8 @@ function resolve(dir) {
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+// const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const MonacoWebpackPlugin = require('monaco-editor-esm-webpack-plugin');
 
 // externals: {
 //   vue: 'Vue',
@@ -69,8 +70,16 @@ module.exports = {
   // ignore  忽略拷贝指定的文件            可以模糊匹配
   configureWebpack: {
     name: "管理系统",
+    module: {
+			rules: [{
+				test: /\.js/,
+				enforce: 'pre',
+				include: /node_modules[\\\/]monaco-editor[\\\/]esm/,
+				use: MonacoWebpackPlugin.loader
+			}]
+		},
     // 打包静态文件插件
-    plugins: [new CopyWebpackPlugin([{ from: "./static", to: "static" }])],
+    plugins: [new CopyWebpackPlugin([{ from: "./static", to: "static" }]), new MonacoWebpackPlugin()],
     resolve: {
       alias: {
         // vue$: "vue/dist/vue.esm.js", 或 runtimeCompiler: true
@@ -81,7 +90,8 @@ module.exports = {
   },
   runtimeCompiler: true,
   chainWebpack: config => {
-    config.plugin("monaco").use(new MonacoWebpackPlugin());
+    // config.externals = cdn.externals
+    // config.plugin("monaco").use(new MonacoWebpackPlugin());
     config.plugin("html").tap(args => {
       args[0].title = "XX市家庭医生签约平台";
       args[0].cdn = cdn

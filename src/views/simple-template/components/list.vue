@@ -8,7 +8,7 @@
 -->
 <template>
   <div class="h-full w-full">
-    <div class="w-1/2 margin h-14">
+    <div class="w-1/2 margin" style="height: 36px">
       <scroll-tag id="__uniq" mode="vertical" @prev="switchPrev" @next="switchNext" showPosition :animation="300">
         <i class="fa fa-angle-left" slot="leftIcon"/>
         <i class="fa fa-angle-right" slot="rightIcon"/>
@@ -26,7 +26,7 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <div style="height: 200px">
+    <div style="height: 500px">
       {{ hellow }}
       <monaco ref="monacoPreviewResource" id="monacoResource" v-model="hellow" />
     </div>
