@@ -81,16 +81,16 @@
         style="z-index: 7"
       >
         <ul
-          class="bg-white w-28 text-black rounded border text-gray-500 cursor-pointer curstom text-sm  border-gray-100"
+          class="menu-dropdown curstom"
         >
-          <li class="px-2 py-1 border-b border-gray-100" @click="deleteNode">
-            <i class="el-icon-delete mr-1" />删除节点
+          <li class="menu-li" @click="deleteNode">
+            <i class="el-icon-delete" />删除节点
           </li>
           <li
-            class="px-2 py-1 border-b border-gray-100"
+            class="menu-li"
             @click="editNode(false)"
           >
-            <i class="el-icon-edit mr-1" />编辑节点
+            <i class="el-icon-edit" />编辑节点
           </li>
         </ul>
       </contextjs>
@@ -798,6 +798,17 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
+.menu-dropdown
+  background white
+  padding: 5px 0;
+  width 100px
+  color: #000
+  border-radius 4px
+  cursor pointer
+  font-size: 14px
+.menu-li
+  padding: 5px 10px
+  border-bottom 1px solid #eee
 .dragger-wrap
   height: 500px
   display: flex
