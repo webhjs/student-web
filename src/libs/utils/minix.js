@@ -20,6 +20,31 @@ export default {
 			}
 			this.appMainTheme.removeCache(tag.fullPath)
 			this.delVisitedTabsView(tag).then(() => {
+				const { path, query, name } = routeConfig;
+				function getParams(params) {
+					let paramStr = '';
+					Object.keys(params)
+						.forEach((item) => {
+							if (paramStr === '') {
+								paramStr = `${item}=${params[item]}`;
+							} else {
+								paramStr = `${paramStr}&${item}=${params[item]}`;
+							}
+						});
+					return paramStr;
+				}
+				let fullPath;
+				if (name) {
+					const { route } = this.$router.resolve({ name })
+					const find = route.matched.find(f => f.name === name)
+					fullPath = find.path
+					query && (fullPath += '?' + getParams(query))
+				}
+				if(path) {
+					fullPath = path
+					query && (fullPath += '?' + getParams(query))
+				}
+				fullPath && this.appMainTheme.removeCache(fullPath)
 				this.$router.push(routeConfig)
 			});
 			/* 删除当前页 */
