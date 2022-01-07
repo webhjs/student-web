@@ -253,6 +253,6 @@ export default {
 </script>
 
 <style lang="stylus">
-.examDialog .inline
+.inline
   font-size 20px;
 </style>

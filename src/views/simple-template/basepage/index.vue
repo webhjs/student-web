@@ -72,7 +72,7 @@ export default {
       this.serach();
     },
     changeNum(val) {
-      alert(val)
+      this.$message.warning(String(val))
     }
   }
 };
