@@ -51,7 +51,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "svg-sprite-loader": "^3.6.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "eslintConfig": {
     "root": true,

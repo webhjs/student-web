@@ -18,6 +18,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const MonacoWebpackPlugin = require('monaco-editor-esm-webpack-plugin');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 // externals: {
 //   vue: 'Vue',
 //   vuex: 'Vuex',
@@ -79,7 +81,7 @@ module.exports = {
 			}]
 		},
     // 打包静态文件插件
-    plugins: [new CopyWebpackPlugin([{ from: "./static", to: "static" }]), new MonacoWebpackPlugin()],
+    plugins: [new CopyWebpackPlugin([{ from: "./static", to: "static" }]), new MonacoWebpackPlugin(), new BundleAnalyzerPlugin()],
     resolve: {
       alias: {
         // vue$: "vue/dist/vue.esm.js", 或 runtimeCompiler: true
