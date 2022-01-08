@@ -165,12 +165,12 @@ export default {
     gostudent() {
       this.setPosition('left')
       this.setRoleName('学员')
-      this.$router.push({ path: '/home' });
+      this.$router.push({ path: '/student/myexam/index' });
     },
     goteacher() {
       this.setPosition('left')
       this.setRoleName('教员')
-      this.$router.push({ path: '/teacher/examlist/index' });
+      this.$router.push({ path: '/instructor/examlist/index' });
     },
     // 设置布局
     setLayout() {

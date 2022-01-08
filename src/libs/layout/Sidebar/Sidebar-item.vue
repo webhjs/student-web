@@ -9,7 +9,7 @@
       v-if="
         hasOneShowingChildren(item.children, item)
       "
-      :index="resolvePathOnly()"
+      :index="resolvePath(onlyOneChild.path)"
     >
       <item
         :icon="item.children.length ? item.children[0].meta.icon : item.meta.icon"
@@ -105,9 +105,6 @@ export default {
         flag = true
       }
       return flag && (!this.onlyOneChild.children || this.onlyOneChild.noShowingChild) && !parent.alwaysShow
-    },
-    resolvePathOnly() {
-      return path.resolve(this.basePath, this.onlyOneChild.path)
     },
     resolvePath(routePath = '') {
       // console.log(path.resolve(this.basePath, routePath))
