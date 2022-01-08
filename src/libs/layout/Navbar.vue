@@ -160,23 +160,17 @@ export default {
     goadmin() {
       this.setPosition('left')
       this.setRoleName('系统管理员')
-      const path = '/simple/userlist/index'
-      window.location = path
-      // this.$router.push({ path: '/simple/userlist/index' });
+      this.$router.push({ path: '/simple/userlist/index' });
     },
     gostudent() {
       this.setPosition('left')
       this.setRoleName('学员')
-      const path = '/home'
-      window.location = path
-      // this.$router.push({ path: '/home' });
+      this.$router.push({ path: '/home' });
     },
     goteacher() {
       this.setPosition('left')
       this.setRoleName('教员')
-      const path = '/teacher/examlist/index'
-      window.location = path
-      //this.$router.push({ path: '/teacher/examlist/index' });
+      this.$router.push({ path: '/teacher/examlist/index' });
     },
     // 设置布局
     setLayout() {
@@ -233,7 +227,7 @@ export default {
   display flex
   justify-content space-between
   align-items center
-  margin-right: 24px
+  margin-right: 10px
   width 320px
   font-size 22px
 }
