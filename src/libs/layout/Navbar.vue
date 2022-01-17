@@ -70,17 +70,15 @@
                   {{ $t("navbar.profile") }}
                 </el-dropdown-item>
               </router-link>
-              <!-- <router-link to="/simple/home/index"> -->
-                <el-dropdown-item @click.native="gostudent">
-                  返回学生端
-                </el-dropdown-item>
-                <el-dropdown-item @click.native="goteacher">
-                  教员后台
-                </el-dropdown-item>
-                <el-dropdown-item @click.native="goadmin">
-                  系统管理
-                </el-dropdown-item>
-              <!-- </router-link> -->
+              <el-dropdown-item @click.native="gostudent">
+                返回学生端
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="goteacher">
+                教员后台
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="goadmin">
+                系统管理
+              </el-dropdown-item>
               <el-dropdown-item @click.native="logout">
                 <span style="display:block;">{{ $t("navbar.logOut") }}</span>
               </el-dropdown-item>
@@ -160,17 +158,17 @@ export default {
     goadmin() {
       this.setPosition('left')
       this.setRoleName('系统管理员')
-      this.$router.push({ path: '/simple/userlist/index' });
+      this.$router.push({ path: '/home' });
     },
     gostudent() {
       this.setPosition('left')
       this.setRoleName('学员')
-      this.$router.push({ path: '/student/myexam/index' });
+      this.$router.push({ path: '/home' });
     },
     goteacher() {
       this.setPosition('left')
       this.setRoleName('教员')
-      this.$router.push({ path: '/instructor/examlist/index' });
+      this.$router.push({ path: '/home' });
     },
     // 设置布局
     setLayout() {

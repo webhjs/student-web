@@ -90,6 +90,7 @@ const layout = {
     position: state => state.position,
     isCollapse: state => state.isCollapse,
     routers: state => {
+      console.log('---------')
       if (Array.isArray(state.originRouters)) {
         if (state.roleName) {
           const find = state.originRouters.find(f => state.roleName == f.rolename)
@@ -97,10 +98,10 @@ const layout = {
             return find.menu
           } else {
             saveToLocal('roleName', '')
-            return state.originRouters.length ? state.originRouters[0].menu : []
+            return state.originRouters.length ? state.originRouters : []
           }
         } else {
-          return state.originRouters.length ? state.originRouters[0].menu ? [] : state.originRouters : []
+          return state.originRouters.length ? state.originRouters : []
         }
       } else {
         return state.routers
