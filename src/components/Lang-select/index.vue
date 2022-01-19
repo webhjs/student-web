@@ -14,7 +14,7 @@
     placement="bottom-start"
   >
     <div>
-      <svg-icon class="icon" icon-class="language" />
+      <svg-icon class="icon" src="language" />
     </div>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item command="zh" :disabled="language === 'zh'">

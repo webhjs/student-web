@@ -107,6 +107,8 @@ export default {
 .overflowClass
   height: calc(100% - 55px)
   overflow: auto
+.right_menu
+  height: 100%
 /*隐藏文字*/
 /deep/ .el-menu--collapse .el-submenu__title span
   display: none

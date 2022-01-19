@@ -19,8 +19,6 @@ import Api from "@/api"
 
 // 自定义的全局组件
 import Notification from "@/components/Notification";
-// html转pdf
-import htmlToPdf from "@/libs/utils/htmlToPdf";
 // random
 import random from "@/libs/utils/random";
 // 导航栏无法收缩
@@ -33,8 +31,7 @@ import Ellipsis from 'vue-directive-ellipsis'
 import 'vue-directive-ellipsis/dist/ellipsis.umd.css'
 
 export function initSetup(Vue) {
-  Vue.directive('ellipsis', Ellipsis)
-  Vue.use(htmlToPdf);
+  Vue.directive('ellipsis', Ellipsis);
   Vue.use(Api);
   Vue.use(random);
   Vue.use(Fragment.Plugin);

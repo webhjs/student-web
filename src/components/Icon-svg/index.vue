@@ -16,14 +16,14 @@
   export default {
     name: 'icon-svg',
     props: {
-      iconClass: {
+      src: {
         type: String,
         required: true
       }
     },
     computed: {
       iconName() {
-        return `#icon-${this.iconClass}`
+        return `#icon-${this.src}`
       }
     }
   }

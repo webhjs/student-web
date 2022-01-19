@@ -114,7 +114,7 @@ export default {
   padding: 10px
 </style>
 <style>
-.px-2{
+.margin12{
   margin-right: 12px
 }
 </style>

@@ -225,7 +225,7 @@ export default {
   display flex
   justify-content space-between
   align-items center
-  margin-right: 10px
+  margin-right: 23px
   width 320px
   font-size 22px
 }
@@ -237,7 +237,7 @@ export default {
 }
 .dropdown-wrap {
   display flex
-  width 120px
+  width 130px
 }
 .drop-img {
   display inline
@@ -252,7 +252,6 @@ export default {
 .account-wrap {
   width 100%
   height 100%
-  padding-left 10px
   position relative
 }
 .username {

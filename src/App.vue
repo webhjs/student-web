@@ -41,4 +41,5 @@ export default {
 <style>
 @import "./libs/assets/style/index.css";
 @import "./libs/assets/style/custom.css";
+@import "./libs/assets/style/windcss.css";
 </style>

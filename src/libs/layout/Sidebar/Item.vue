@@ -28,7 +28,7 @@
         // 否则就默认使用 `Element-UI` 图标
         if(icon.startsWith('svg-')) {
           const _icon = icon.substr(4)
-          vnodes.push(<svg-icon class="sidebar-icon" icon-class={_icon}/>)
+          vnodes.push(<svg-icon class="sidebar-icon" src={_icon}/>)
         } else if(icon.startsWith('fa-')) {
           const _icon = icon.substr(3)
           vnodes.push(<i class={'sidebar-icon fa ' + _icon}></i>)

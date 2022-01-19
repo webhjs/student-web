@@ -318,9 +318,6 @@ export default {
   display: flex
   flex-flow column
 }
-.right_menu {
-  height: 100%
-}
 
 .main-container
   overflow auto
