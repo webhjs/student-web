@@ -8,8 +8,13 @@
 -->
 <template>
     <div class="container">
-      <div class="main-content">
-        <tinymce id="fill" fillBtn v-model="questiontitle" @changeNum="changeNum" />
+      <div class="main-content flex flex-col">
+        <div class="flex-1 relative">
+          <tinymce id="fill" fillBtn v-model="questiontitle" @changeNum="changeNum" />
+        </div>
+        <div class="flex-1 relative">
+          <lines />
+        </div>
       </div>
       <div align="right">
         <el-pagination
@@ -28,9 +33,11 @@
 
 <script>
 import Tinymce from '@/components/Tinymce'
+import Lines from '@/views/simple-template/basepage/Lines'
 export default {
   components: {
-    Tinymce
+    Tinymce,
+    Lines
   },
   data() {
     return {
