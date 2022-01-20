@@ -33,7 +33,7 @@ export const asyncRouterMap = [
     name: "map",
     alwaysShow: true,
     redirect: "/map/citymap",
-    meta: { icon: "s-home", title: "地图", roles: ["Lucy"] },
+    meta: { icon: "el-icon-eleme", title: "地图", roles: ["Lucy"] },
     children: [
       {
         path: "citymap",

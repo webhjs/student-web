@@ -112,7 +112,7 @@ export default {
         // toolbar_mode: "wrap", // 是否出現省略號
         setup: editor => {
           if (this.fillBtn) {
-            const str = '<svg-icon class="inline" icon-class="fill" />';
+            const str = '<svg-icon class="inline" src="fill" />';
             // 创建构造器
             const svgIcon = Vue.extend({
               template: str
