@@ -326,6 +326,8 @@ export default {
       text-align center
       .lang-select
         float right
+      >>> .icon
+        fill: #89befa
     .login-title
       font-size 1.5rem
       text-align center
