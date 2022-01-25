@@ -19,7 +19,7 @@
       collapse-transition
       router
     >
-      <el-menu-item v-if="logo" class="logo-name" index="" style="color: hsla(0,0%,100%,.85);font-weight: bold;font-size: 16px;">
+      <el-menu-item v-if="logo" class="logo-name" index="" style="color: hsla(0,0%,100%,.85);font-weight: bold;font-size: 0;">
         <img
           src="@/libs/assets/imgs/logo.png"
           alt=""
@@ -27,7 +27,7 @@
           height="20px"
           class="inline"
         />
-        <span slot="title"> {{ $t("navbar.title") }}</span>
+        <span slot="title" style="font-size: 16px;"> {{ $t("navbar.title") }}</span>
       </el-menu-item>
       <div :class="overflowClass">
         <sidebar-item
