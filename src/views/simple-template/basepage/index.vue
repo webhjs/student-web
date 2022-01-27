@@ -7,6 +7,7 @@
  * @LastEditTime: 2021-08-30 11:18:20
 -->
 <template>
+  <div>
     <div class="container">
       <div class="main-content flex flex-col">
         <div class="flex-1 relative">
@@ -29,6 +30,7 @@
         ></el-pagination>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
