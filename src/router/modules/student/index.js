@@ -37,14 +37,8 @@ export const asyncRouterMap = [
       {
         path: "infinite",
         name: "infinite",
-        meta: { icon: "star-on", title: "文档懒加载", keepAlive: false },
+        meta: { icon: "star-on", title: "懒加载", keepAlive: false },
         component: () => Lazy(import("@/views/simple-template/lazyscroll/infinite"))
-      },
-      {
-        path: "imgscroll",
-        name: "imgscroll",
-        meta: { icon: "star-on", title: "图片懒加载", keepAlive: false },
-        component: () => Lazy(import("@/views/simple-template/lazyscroll/imgscroll"))
       }
     ]
   },
