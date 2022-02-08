@@ -30,8 +30,16 @@ import "@/permission";
 import Ellipsis from 'vue-directive-ellipsis'
 import 'vue-directive-ellipsis/dist/ellipsis.umd.css'
 
+import directives from '@/libs/directives/index.js'
+
+import waterfall from "vue-waterfall2";
+
 export function initSetup(Vue) {
   Vue.directive('ellipsis', Ellipsis);
+  // 缩放 拖拽 指令 <div v-flow-drag v-flow-wheel>
+  Vue.directive('flowWheel', directives.flowWheel) // 缩放
+  Vue.directive('flowDrag', directives.flowDrag) // 拖拽
+  Vue.use(waterfall);
   Vue.use(Api);
   Vue.use(random);
   Vue.use(Fragment.Plugin);

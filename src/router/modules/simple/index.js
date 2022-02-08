@@ -68,6 +68,22 @@ export const constantRouterMap = [
         component: () => Lazy(import("@/views/simple-template/jsplumb"))
       }
     ]
+  },
+  {
+    path: "/waterfall",
+    name: "waterfall",
+    alwaysShow: true,
+    meta: { icon: "document-copy", title: "瀑布流" },
+    component: Layout,
+    redirect: "/waterfall/index",
+    children: [
+      {
+        path: "index",
+        name: "waterfall-index",
+        meta: { icon: "document-copy", title: "瀑布流" },
+        component: () => Lazy(import("@/views/simple-template/waterfall"))
+      }
+    ]
   }
 ];
 export const asyncRouterMap = [
